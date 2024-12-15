@@ -1,0 +1,26 @@
+predict stock price using Neural Network.
+
+In this Dataset, Bitcoin(stock name) USD values from 1st Jan, 2017 to 15th Nov, 2019 downloaded from yahoo finance having one day resolution. It can be used to check simple time-series forecasting models.
+This dataset contains 1049 rows and 7 features including Date, Open, High, Low, Close, Adj Close and Volume
+
+Stock price forecasting is one of the most challenging tasks in financial decision-making because stock prices are inherently noisy and non-stationary and have been observed to have a random-walk characteristic.
+Accurate stock price predictions can yield significant profits and therefore econometric and statistical approaches including linear/non-linear methods.
+
+Time-series forecasting means predicting future values in time. Developing a forecasting model depends on the forecasting horizon. Very short-term forecasting would typically involve predicting the value at the 
+next minute or hour, short-term forecasting has a horizon of days or weeks, long-term forecasting is done for months or a year or two, and we also have very-long term forecasting that could easily have a 
+horizon of up to a few decades.
+Here, we will build a simple Deep Learning based very-short-term Time-series forecaster, that will predict the stock prices of Bitcoin.
+
+Steps:
+1. Import required packages
+2. Load the data from csv.
+3. Plot the Time-series to view the Trend
+4. Use stattools.acf (acf for autocorrelation function) to plot the autocorrelation with 50 past time-instants (lags).
+    For example the ACF for a time series is given by:
+    Corr=(yt,yt−k) 
+    This value of k is the time gap being considered and is called the lag. A lag 1 autocorrelation (i.e., k = 1 in the above) is the correlation between values that are one time period apart.
+    More generally, a lag k autocorrelation is the correlation between values that are k time periods apart.
+5. From the arrived plot observe after what time instants (lags) the correlation value is less than 0.9, correlation is a way to measure the strength of association between any two variables. 
+   As the correlation value approaches 1, it indicates high positive association. Correlation near 0 indicates almost no association at all. So, ignore time instants (lags) having a correlation value less than 0.9
+   Based om the observed value, set the lag.
+6. Create dataset with 15 lags for training.
